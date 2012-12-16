@@ -97,28 +97,6 @@
 				<div class="description">(<?php _e('Choose the plugins which u want to load into CKEditor', 'ckeditor_wordpress');?>)</div>
 			</td>
 			</tr>
-			<tr valign="top">
-				<th scope="row"><?php _e('Load method', 'ckeditor_wordpress') ?></th>
-				<td>
-					<select name="options[advanced][load_method]">
-						<option value="ckeditor.js"<?php echo ($this->options['advanced']['load_method']=='ckeditor.js'?' selected="selected"':'') ?>>ckeditor.js</option>
-						<option value="ckeditor_basic.js"<?php echo ($this->options['advanced']['load_method']=='ckeditor_basic.js'?' selected="selected"':'') ?>>ckeditor_basic.js</option>
-						<?php if (file_exists(dirname(dirname(__FILE__))."/ckeditor/_source")):?>
-						<option value="ckeditor_source.js"<?php echo ($this->options['advanced']['load_method']=='ckeditor_source.js'?' selected="selected"':'') ?>>ckeditor_source.js (for developers only)</option>
-						<?php endif; ?>
-					</select>
-					<div class="description"><?php _e('Select the load method of CKEditor. If ckeditor_base.js is used, only a small file is initially loaded and the rest part of the editor is loaded later (see "Load timeout"). This might be handy if CKEditor is disabled by default.', 'ckeditor_wordpress');?><br/>
-					<?php _e('You can also choose loading ckeditor_source.js (for developers), but only if you download the full CKEditor package from <a href="http://ckeditor.com/download">CKEditor web site</a> and unpack it in the "ckeditor" folder. CKEditor distributed with this plugin does not contain _source files as well as the _samples folder to reduce the size of a plugin, that\'s why this option is not available by default.', 'ckeditor_wordpress') ?></div>
-				</td>
-			</tr>
-			<tr valign="top">
-				<th scope="row"><?php _e('Load timeout', 'ckeditor_wordpress')?></th>
-				<td>
-					<input type="text" name="options[advanced][load_timeout]"	value="<?php echo $this->options['advanced']['load_timeout']; ?>"/>s
-					<?php if (isset($message['advanced_load_timeout'])): ?><span class="error"><?php echo $message['advanced_load_timeout'] ?></span><?php endif; ?>
-					<div class="description"><?php _e('The time to wait (in seconds) to load the full editor code after the page load, if the "ckeditor_basic.js" file is used. If set to zero, the editor is loaded on demand.', 'ckeditor_wordpress') ?></div>
-				</td>
-			</tr>
 			<?php
 				$langs = apply_filters('ckeditor_load_lang_options', array());
 			?>

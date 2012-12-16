@@ -22,23 +22,29 @@ CKEDITOR.editorConfig = function(config) {
 	// WordPress basic toolbar
 	config.toolbar_WordpressBasic = [ [ 'Bold', 'Italic', '-', 'Link', 'Unlink', '-', 'Blockquote' ] ];
 
+	config.toolbar_WordpressBasic = [
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight'] },
+		{ name: 'links', items: [ 'Link', 'Unlink' ] },
+		{ name: 'insert', items: [ 'Image', 'SpecialChar' ] }
+	];
+
 	// WordPress full toolbar
 	config.toolbar_WordpressFull = [
-			['Source'],
-			['Cut','Copy','Paste','PasteText','PasteFromWord','-','SpellChecker', 'Scayt'],
-			['Undo','Redo','Find','Replace','-','SelectAll','RemoveFormat'],
-			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],
-			'/',
-			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-			['BidiLtr','BidiRtl'],
-			['Link','Unlink','Anchor'],
-			'/',
-			['Format','Font','FontSize'],
-			['TextColor','BGColor'],
-			['Maximize', 'ShowBlocks'],['MediaEmbed'],['Iframe']
-		];
+		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] },
+		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll' ] },
+		'/',
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
+		{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+		{ name: 'insert', items: [ 'Image', 'Flash', 'MediaEmbed', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe' ] },
+		'/',
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+		{ name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
+		{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+		{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] }
+	];
+
 	
 	//IE: remove border of image when is as a link
 	config.extraCss = "a img { border: 0px\\9; }";

@@ -3,7 +3,7 @@
 class ckeditor_wordpress {
 
 	private static $instance;
-	public $version = '3.6.3';
+	public $version = '4.0';
 	public $default_options = array();
 	public $options = array();
 	public $ckeditor_path = "";
@@ -40,7 +40,7 @@ class ckeditor_wordpress {
 		);
 		$this->default_options = array(
 			'appearance' => array(
-				'skin' => 'kama',
+				'skin' => 'moono',
 				'uicolor' => 'default',
 				'uicolor_user' => '',
 				/* basic post settings */
@@ -51,7 +51,7 @@ class ckeditor_wordpress {
 				/* basic comment settings */
 				'comment_editor' => 't',
 				'comment_toolbar' => 'WordpressBasic',
-				'comment_editor_height' => 120,
+				'comment_editor_height' => 160,
 			),
 			'upload' => array(
 				'browser' => 'disabled',
@@ -205,7 +205,7 @@ class ckeditor_wordpress {
 		if (is_plugin_active('qtranslate/qtranslate.php'))
 		{
 			$this->generate_js_options(false);
-			echo '<script type="text/javascript" src="'.$this->ckeditor_path . $this->options['advanced']['load_method'].'"></script>';
+			echo '<script type="text/javascript" src="'.$this->ckeditor_path .'ckeditor.js"></script>';
 			echo '<script type="text/javascript" src="'.$this->plugin_path . 'includes/ckeditor.utils.js"></script>';
 			global $q_config;
 			$q_config['js']['qtrans_tinyMCEOverload'] = '';
@@ -252,11 +252,11 @@ class ckeditor_wordpress {
 	}
 
 	private function ckeditor_get_version() {
-		$jspath = dirname(__FILE__) . '/ckeditor/ckeditor_basic.js';
+		$jspath = dirname(__FILE__) . '/ckeditor/ckeditor.js';
 		$contents = @file_get_contents($jspath);
 		if ($contents) {
 			$matches = array();
-			if (preg_match('#,version:\'(.*?)\',#', $contents, $matches)) {
+			if (preg_match('#,version:[\'"](.*?)[\'"],#', $contents, $matches)) {
 				return $matches[1];
 			}
 		}
@@ -499,7 +499,7 @@ class ckeditor_wordpress {
 			return;
 		}
 		wp_enqueue_script('editor');
-		wp_enqueue_script('ckeditor', $this->ckeditor_path . $this->options['advanced']['load_method']);
+		wp_enqueue_script('ckeditor', $this->ckeditor_path . "ckeditor.js");
 		wp_enqueue_script('ckeditor.utils', $this->plugin_path . 'includes/ckeditor.utils.js', array('ckeditor', 'jquery'));
 
 		$this->generate_js_options(false);
@@ -517,7 +517,7 @@ class ckeditor_wordpress {
 		if ( is_plugin_active('w3-total-cache/w3-total-cache.php') ) {
 			define('DONOTMINIFY', true);
 		}
-		wp_enqueue_script('ckeditor', $this->ckeditor_path . $this->options['advanced']['load_method']);
+		wp_enqueue_script('ckeditor', $this->ckeditor_path . "ckeditor.js");
 		wp_enqueue_script('ckeditor.utils', $this->plugin_path . 'includes/ckeditor.utils.js', array('ckeditor', 'jquery'));
 		wp_deregister_script('comment-reply');
 		wp_register_script('comment-reply', $this->plugin_path . 'includes/ckeditor.comment-reply.js', array('ckeditor', 'ckeditor.utils'), "20100901");

@@ -10,19 +10,22 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	CKEDITOR.plugins.add( 'mediaembed',
 	{
 		requires : [ 'fakeobjects', 'htmlwriter' ],
-		init: function( editor )
+		onLoad : function()
 		{
-			editor.addCss(
+			CKEDITOR.addCss(
 				'img.cke_mediaembed' +
-				'{' +
+					'{' +
 					'background-image: url(' + CKEDITOR.getUrl( this.path + 'images/placeholder.gif' ) + ');' +
 					'background-position: center center;' +
 					'background-repeat: no-repeat;' +
 					'border: 1px solid #a9a9a9;' +
 					'width: 80px;' +
 					'height: 80px;' +
-				'}'
-				);
+					'}'
+			);
+		},
+		init: function( editor )
+		{
 			var me = this;
 			CKEDITOR.dialog.add( 'MediaEmbedDialog', function( editor ) {
 				return {

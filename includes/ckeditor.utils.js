@@ -19,7 +19,7 @@ jQuery(document).ready(function () {
 					evt.editor.config['toolbar_' + evt.editor.config.toolbar].push(ckeditorSettings.additionalButtons[x]);
 				}
 			}
-			evt.editor.addCss(evt.editor.config.extraCss);
+			CKEDITOR.addCss(evt.editor.config.extraCss);
 		}
 	};
 	CKEDITOR.on( 'instanceReady', function( ev )
@@ -215,17 +215,9 @@ function ckeditorOn(id) {
 		jQuery('#edButtonPreview').addClass('active');
 		jQuery('#edButtonHTML').removeClass('active');
 		instance = CKEDITOR.replace(id, ckeditorSettings.configuration);
-		if (typeof ckeditorSettings.configuration['extraCss'] != 'undefined')
-		{
-			CKEDITOR.instances[id].addCss(ckeditorSettings.configuration['extraCss']);
-		}
 	}
 	if ( jQuery('textarea#'+ckeditorSettings.textarea_id).length && (typeof(CKEDITOR.instances) == 'undefined' || typeof(CKEDITOR.instances[ckeditorSettings.textarea_id]) == 'undefined' ) && jQuery("#"+ckeditorSettings.textarea_id).parent().parent().attr('id') != 'quick-press') {
 		instance =  CKEDITOR.replace(ckeditorSettings.textarea_id, ckeditorSettings.configuration);
-		if (typeof ckeditorSettings.configuration['extraCss'] != 'undefined')
-		{
-			CKEDITOR.instances[ckeditorSettings.textarea_id].addCss(ckeditorSettings.configuration['extraCss']);
-		}
 		if(ckeditorSettings.textarea_id == 'content') {
 			setUserSetting( 'editor', 'tinymce' );
 			jQuery('#quicktags').hide();
@@ -273,6 +265,12 @@ function getTinyMCEObject()
 {
 	var tinymce = window.tinyMCE = (function () {
 		var tinyMCE = {
+			isOpera : function() {
+				return CKEDITOR.env.opera;
+			},
+			onAddEditor : { add : function() {
+				// this function did nothing else apart from resizing TinyMCE
+			} },
 			get : function (id) {
 				var instant = {
 					isHidden : function (){

@@ -254,7 +254,7 @@ Folders to not display in CKFinder, no matter their location.
 No paths are accepted, only the folder name.
 The * and ? wildcards are accepted.
 */
-$config['HideFolders'] = Array(".svn", "CVS");
+$config['HideFolders'] = Array(".*", "CVS");
 
 /*
 Files to not display in CKFinder, no matter their location.

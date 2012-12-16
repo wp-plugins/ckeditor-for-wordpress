@@ -40,15 +40,12 @@ var image_attributes = [];
 {
 	CKEDITOR.plugins.add( 'wpgallery',
 	{
-		requires : [ 'htmlwriter',  'htmldataprocessor', 'entities'  ],
-		init: function( editor )
+		requires : [ 'htmlwriter', 'entities'  ],
+		onLoad : function()
 		{
-			//editor.config.entities = false;
-			// Borrowed from the pagebreak plugin
-
-			editor.addCss(
+			CKEDITOR.addCss(
 				'img.cke_wpgallery' +
-				'{' +
+					'{' +
 					'background-image: url(' + CKEDITOR.getUrl( this.path + 'images/gallery.png' ) + ');' +
 					'background-position: center center;' +
 					'background-color: #F2F8FF;' +
@@ -61,29 +58,32 @@ var image_attributes = [];
 					'width:50% !important; _width:49.9% !important;' +
 					'height: 250px !important;' +
 					'page-break-after: always;' +
-				'}' +
-				'.aligncenter, dl.aligncenter' +
-				'{' +
+					'}' +
+					'.aligncenter, dl.aligncenter' +
+					'{' +
 					'display: block;' +
 					'margin-left: auto;' +
 					'margin-right: auto;'+
-				'}' +
-				'.alignleft'+
-				'{' +
+					'}' +
+					'.alignleft'+
+					'{' +
 					'float: left;' +
-				'}' +
-				'.alignright' +
-				'{' +
+					'}' +
+					'.alignright' +
+					'{' +
 					'float: right;' +
-				'}' +
-				'.wp-caption' +
-				'{' +
+					'}' +
+					'.wp-caption' +
+					'{' +
 					'background: url(' + CKEDITOR.getUrl( this.path + 'images/caption.png') + ') no-repeat scroll center bottom #F1F1F1;' +
 					'border: none;' +
 					'padding: 8px 8px 30px 8px !important;' +
 					'max-width: 632px !important; /* prevent too-wide images from breaking layout */' +
-				'}'
+					'}'
 			);
+		},
+		init: function( editor )
+		{
 			editor.addCommand( 'wpgallery_edit',
 			{
 				exec : function(editor)
