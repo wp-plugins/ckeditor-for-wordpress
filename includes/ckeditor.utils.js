@@ -14,11 +14,8 @@ jQuery(document).ready(function () {
 				}
 			}
 			evt.editor.config.extraPlugins += (evt.editor.config.extraPlugins ? ','+externals.join(',') : externals.join(','));
-			if (typeof(ckeditorSettings.additionalButtons) != 'undefined') {
-				for (var x in ckeditorSettings.additionalButtons) {
-					evt.editor.config['toolbar_' + evt.editor.config.toolbar].push(ckeditorSettings.additionalButtons[x]);
-				}
-			}
+			if (evt.editor.config[evt.editor.config.toolbar +'_removeButtons']);
+				evt.editor.config.removeButtons = evt.editor.config[evt.editor.config.toolbar +'_removeButtons'];
 			CKEDITOR.addCss(evt.editor.config.extraCss);
 		}
 	};

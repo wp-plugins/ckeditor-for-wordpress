@@ -75,7 +75,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			{
 				label: 'Embed Media',
 				command: 'MediaEmbed',
-				icon: this.path + 'images/icon.gif'
+				icon: this.path + 'images/icon.gif',
+				toolbar: 'wordpress,100'
 			} );
 		},
 		afterInit : function( editor )

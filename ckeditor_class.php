@@ -621,6 +621,9 @@ class ckeditor_wordpress {
 		$settings['entities_greek'] = $settings['entities'];
 		$settings['entities_latin'] = $settings['entities'];
 		$settings['toolbar'] = ($is_comment ? $options['appearance']['comment_toolbar'] : $options['appearance']['post_toolbar']);
+		if ($settings['toolbar'] == 'Full') {
+			unset($settings['toolbar']);
+		}
 		$settings['templates_files'][] = $this->plugin_path . 'ckeditor.templates.js';
 		$output = array(
 			'textarea_id' => ($is_comment ? 'comment' : 'content'),

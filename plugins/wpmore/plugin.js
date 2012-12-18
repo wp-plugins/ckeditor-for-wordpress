@@ -35,6 +35,7 @@ CKEDITOR.plugins.add( 'wpmore',
 			{
 				label : 'Insert More Break',
 				icon : this.path + 'images/more.gif',
+				toolbar: 'links,100',
 				command : 'wpmore'
 			});
 

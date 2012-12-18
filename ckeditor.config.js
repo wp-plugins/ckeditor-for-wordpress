@@ -20,8 +20,6 @@ CKEDITOR.editorConfig = function(config) {
 	// List of all buttons is here: http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.toolbar_Full
 
 	// WordPress basic toolbar
-	config.toolbar_WordpressBasic = [ [ 'Bold', 'Italic', '-', 'Link', 'Unlink', '-', 'Blockquote' ] ];
-
 	config.toolbar_WordpressBasic = [
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight'] },
@@ -29,23 +27,28 @@ CKEDITOR.editorConfig = function(config) {
 		{ name: 'insert', items: [ 'Image', 'SpecialChar' ] }
 	];
 
-	// WordPress full toolbar
-	config.toolbar_WordpressFull = [
-		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] },
-		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
-		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll' ] },
+	// The equivalent of "WordpressFull" toolbar, defined in a way that makes adding buttons from plugins easier.
+	config.toolbarGroups = [
+		{ name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+		// { name: 'forms' },
 		'/',
-		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
-		{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-		{ name: 'insert', items: [ 'Image', 'Flash', 'MediaEmbed', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe' ] },
+		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+		{ name: 'links' },
+		{ name: 'insert' },
+		{ name: 'wordpress' },
 		'/',
-		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-		{ name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
-		{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-		{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] }
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'styles' },
+		{ name: 'colors' },
+		{ name: 'tools' },
+		{ name: 'about' }
 	];
 
-	
+	// Remove buttons in "WordpressFull" toolbar
+	config.WordpressFull_removeButtons = 'Save,NewPage,Preview,Print,Templates,CreateDiv,PageBreak,Subscript,Superscript,Styles';
+
 	//IE: remove border of image when is as a link
 	config.extraCss = "a img { border: 0px\\9; }";
 		
