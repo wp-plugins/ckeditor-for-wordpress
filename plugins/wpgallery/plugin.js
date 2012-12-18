@@ -37,11 +37,13 @@ if (!Array.prototype.indexOf)
 var image_attributes = {};
 (function()
 {
+	var pluginPath;
 	CKEDITOR.plugins.add( 'wpgallery',
 	{
 		requires : [ 'htmlwriter', 'entities'  ],
 		onLoad : function()
 		{
+			pluginPath = this.path;
 			CKEDITOR.addCss(
 				'img.cke_wpgallery' +
 					'{' +
@@ -91,8 +93,10 @@ var image_attributes = {};
 					element = sel.getSelectedElement();
 
 					// Here we get the current value
-					if(CKEDITOR && element && element.data && element.data('gallery')) CKEDITOR.plugins.wpgallery.createGallery( editor, element, element.data('gallery'), 0 );
-					post_id = jQuery("#post_ID").attr('value');
+					if (CKEDITOR && element && element.data && element.data('gallery')) {
+						CKEDITOR.plugins.wpgallery.createGallery( editor, element, element.data('gallery'), 0 );
+					}
+					var post_id = jQuery("#post_ID").attr('value');
 					if (!post_id)
 					{
 						post_id = jQuery("[name='quickpress_post_ID']").attr('value');
@@ -402,10 +406,10 @@ var image_attributes = {};
 			{
 				'data-cke-wpgallery'	: 1,
 				'contentEditable' : false,
-				'class' : 'wpGallery, cke_wpgallery',
+				'class' : 'wpGallery cke_wpgallery',
 				'title' : title,
 				'alt' : 'gallery',
-				'src' : CKEDITOR.getUrl( 'images/spacer.gif' )
+				'src' : CKEDITOR.getUrl( pluginPath + 'images/spacer.gif' )
 			});
 
 			element.data( 'gallery', text );
