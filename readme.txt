@@ -63,6 +63,7 @@ Features:
 * Modified the default toolbars
 * Increased the default height of editor for comments
 * Minor fixes in the old built-in file browser
+* Fixed image captions
  
 = V3.6.3 - 21.06.2012 =
 

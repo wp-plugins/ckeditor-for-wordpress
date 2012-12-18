@@ -351,7 +351,7 @@ function getTinyMCEObject()
 				{
 					if (command == "mceInsertContent")
 					{
-						//test if image has capiton and make necessary text format
+						//test if image has caption and make necessary text format
 						pattern = /\[caption(.*)\]<.*>(.*)\[\/caption\]/i;
 						if (pattern.test(text)) {
 							replace_match = pattern.exec(text);
