@@ -56,14 +56,16 @@ Features:
 
 == Changelog ==
 
-= V4.0 - 16.12.2012 =
+= V4.0 - 19.12.2012 =
 
 * Updated CKEditor to 4.0 version
 * Set the default skin to Moono
 * Modified the default toolbars
 * Increased the default height of editor for comments
-* Minor fixes in the old built-in file browser
 * Fixed image captions
+* Added protection against caching JavaScript files by the browser, by appending CKEditor timestamp to js files
+* Fixed: CKEditor does not load when "external" plugin is enabled, but the required extension is not installed
+* Minor fixes in the old built-in file browser
  
 = V3.6.3 - 21.06.2012 =
 

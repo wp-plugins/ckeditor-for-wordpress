@@ -699,12 +699,19 @@ class ckeditor_wordpress {
 		if (!$is_comment) {
 			$output['externalPlugins'] = apply_filters('ckeditor_external_plugins', array());
 			$output['additionalButtons'] = apply_filters('ckeditor_buttons', array());
+			$available_plugins = array_keys($output['externalPlugins']);
+			$available_plugins[] = "autogrow";
+			$available_plugins[] = "tableresize";
+
 			foreach ((array) $options['plugins'] as $name => $val) {
 				if ($val == 't' && !isset($output['externalPlugins'][$name])) {
 					// skip adding plugin when  NextGEN Gallery plugin is installed and user has not permissions to use it
-					if ($name == 'nextgen' && (!current_user_can('NextGEN Use TinyMCE') ||  !get_user_option('rich_editing') == 'true') ) continue;
-					$output['externalPlugins'][$name] = $this->plugin_path . 'ckeditor/plugins/' . $name . '/';
-				}else if ($val == 'f' && isset($output['externalPlugins'][$name])) {
+					if ($name == 'nextgen' && (!current_user_can('NextGEN Use TinyMCE') ||  !get_user_option('rich_editing') == 'true') ) 
+						continue;
+					if (in_array($name, $available_plugins))
+						$output['externalPlugins'][$name] = $this->plugin_path . 'ckeditor/plugins/' . $name . '/';
+				}
+				else if ($val == 'f' && isset($output['externalPlugins'][$name])) {
 					unset($output['externalPlugins'][$name]);
 				}
 			}
@@ -898,12 +905,12 @@ class ckeditor_wordpress {
 		return $buttons;
 	}
 
-		public function wppoll_external($plugins) {
-				if (function_exists('poll_menu')) {
-						$plugins['wppolls'] = $this->plugin_path . 'plugins/wppolls/';
-				}
-				return $plugins;
+	public function wppoll_external($plugins) {
+		if (function_exists('poll_menu')) {
+			$plugins['wppolls'] = $this->plugin_path . 'plugins/wppolls/';
 		}
+		return $plugins;
+	}
 
 	public function wppoll_buttons($buttons) {
 		if (function_exists('poll_menu')) {
