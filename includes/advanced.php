@@ -113,7 +113,7 @@
 			?>
 				<select name="options[advanced][language]">
 					<?php foreach ($langs AS $key => $lang): ?>
-						<option value="<?php echo $key?>" <?php if($key == $selected):?>selected="selected"<?php endif;?>><?php echo $lang ?></option>
+						<option value="<?php echo $key?>" <?php if ($key == $selected):?>selected="selected"<?php endif;?>><?php echo $lang ?></option>
 					<?php endforeach; ?>
 				</select>
 				<br /><span class="description"><?php _e('The language for the CKEditor user interface.', 'ckeditor_wordpress'); ?></span>
@@ -131,8 +131,8 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Auto-detect language', 'ckeditor_wordpress')?></th>
 				<td>
-					<input id="autodetect_enabled" name="options[advanced][detect_language_auto]" type="radio" value="t" <?php if($auto == 't'):?>checked="checked"<?php endif; ?>><label for="autodetect_enabled">Enabled</label> <br/>
-					<input id="autodetect_disabled" name="options[advanced][detect_language_auto]" type="radio" value="f" <?php if($auto == 'f'):?>checked="checked"<?php endif; ?>><label for="autodetect_disabled"> Disabled</label>
+					<input id="autodetect_enabled" name="options[advanced][detect_language_auto]" type="radio" value="t" <?php if ($auto == 't'):?>checked="checked"<?php endif; ?>><label for="autodetect_enabled">Enabled</label> <br/>
+					<input id="autodetect_disabled" name="options[advanced][detect_language_auto]" type="radio" value="f" <?php if ($auto == 'f'):?>checked="checked"<?php endif; ?>><label for="autodetect_disabled"> Disabled</label>
 					<br /><span class="description"><?php _e('Automatically detect the user language.', 'ckeditor_wordpress'); ?></span>
 					<?php if (isset($message['advanced_detect_language_auto'])): ?><br/><span class="error"><?php echo $message['advanced_detect_language_auto'] ?></span><?php endif; ?>
 				</td>
@@ -149,9 +149,9 @@
 				}
 			?>
 				<select name="options[advanced][language_direction]">
-					<option value="default" <?php if($selected == 'default'):?>selected="selected"<?php endif;?>>Get from current locale (default)</option>
-					<option value="ltr" <?php if($selected == 'ltr'):?>selected="selected"<?php endif;?>>Left-To-Right</option>
-					<option value="rtl" <?php if($selected == 'rtl'):?>selected="selected"<?php endif;?>>Right-To-Left</option>
+					<option value="default" <?php if ($selected == 'default'):?>selected="selected"<?php endif;?>>Get from current locale (default)</option>
+					<option value="ltr" <?php if ($selected == 'ltr'):?>selected="selected"<?php endif;?>>Left-To-Right</option>
+					<option value="rtl" <?php if ($selected == 'rtl'):?>selected="selected"<?php endif;?>>Right-To-Left</option>
 				</select>
 				<br /><span class="description"><?php _e('Choose the language direction used in the editing area. Even when CKEditor automatically detects the user language and adjusts its user interface, the editing area is not automatically changed into the LTR or RTL mode. To be able to type LTR (like English) and RTL (like Arabic, Hebrew, Persian) content at the same time, please make sure that the BidiLtr and BidiRtl buttons are enabled in the toolbar.', 'ckeditor_wordpress'); ?></span>
 				<?php if (isset($message['advanced_language_direction'])): ?><span class="error"><?php echo $message['advanced_language_dierction'] ?></span><?php endif; ?>

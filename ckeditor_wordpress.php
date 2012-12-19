@@ -16,7 +16,7 @@ function ckeditor_init(){
 	require_once 'ckeditor_class.php';
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-	if(is_admin()){
+	if (is_admin()){
 		add_action('admin_menu', array(&$ckeditor_wordpress, 'add_option_page'));
 		add_action('admin_head', array(&$ckeditor_wordpress, 'add_admin_head'));
 		add_action('personal_options_update', array(&$ckeditor_wordpress, 'user_personalopts_update'));
@@ -24,8 +24,8 @@ function ckeditor_init(){
 		add_action('admin_print_footer_scripts', array(&$ckeditor_wordpress, 'remove_tinymce'));
 		// TODO: fix support for V4
 		// add_filter('ckeditor_external_plugins', array(&$ckeditor_wordpress, 'ckeditor_linkbrowser_plugin'));
-		add_action('wp_ajax_linkbrowser_loader', array(&$ckeditor_wordpress, 'ckeditor_linkbrowser_loader'));
-		add_action('wp_ajax_linkbrowser_search', array(&$ckeditor_wordpress, 'ckeditor_linkbrowser_search'));
+		// add_action('wp_ajax_linkbrowser_loader', array(&$ckeditor_wordpress, 'ckeditor_linkbrowser_loader'));
+		// add_action('wp_ajax_linkbrowser_search', array(&$ckeditor_wordpress, 'ckeditor_linkbrowser_search'));
 	}
 
 	add_action( 'wp_print_scripts', array(&$ckeditor_wordpress, 'add_comment_js'));

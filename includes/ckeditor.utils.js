@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
 		configLoaded : function ( evt ) {
 			if (typeof(ckeditorSettings.externalPlugins) != 'undefined') {
 				var externals=new Array();
-				for(var x in ckeditorSettings.externalPlugins) {
+				for (var x in ckeditorSettings.externalPlugins) {
 					CKEDITOR.plugins.addExternal(x, ckeditorSettings.externalPlugins[x]);
 					externals.push(x);
 				}
@@ -37,7 +37,7 @@ jQuery(document).ready(function () {
 		editorCKE = CKEDITOR.instances['content'];
 	});
 
-	if(ckeditorSettings.textarea_id != 'comment'){
+	if (ckeditorSettings.textarea_id != 'comment'){
 		edInsertContentOld = function () {
 			return ;
 		};

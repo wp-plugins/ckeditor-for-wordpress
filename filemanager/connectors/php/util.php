@@ -139,7 +139,7 @@ function DetectHtml( $filePath )
 
 	foreach( $tags as $tag )
 	{
-		if( false !== strpos( $chunk, $tag ) )
+		if ( false !== strpos( $chunk, $tag ) )
 		{
 			return true ;
 		}
