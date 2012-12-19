@@ -615,7 +615,9 @@ class ckeditor_wordpress {
 			$settings['uiColor'] = $options['appearance']['uicolor_user'];
 		}
 		$settings['height'] = ($is_comment ? $options['appearance']['comment_editor_height'] : $options['appearance']['post_editor_height']) . 'px';
-		$settings['skin'] = $options['appearance']['skin'];
+		if (in_array($options['appearance']['skin'], array('moono', 'kama'))) {
+			$settings['skin'] = $options['appearance']['skin'];
+		}
 		$settings['scayt_autoStartup'] = $options['advanced']['scayt_autoStartup'] == 't' ? true : false;
 		$settings['entities'] = $options['advanced']['entities'] == 't' ? true : false;
 		$settings['entities_greek'] = $settings['entities'];
