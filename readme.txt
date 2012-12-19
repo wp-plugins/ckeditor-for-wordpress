@@ -25,7 +25,11 @@ It brings to the web common editing features found on desktop editing applicatio
 
 Live demo is available at <a href="http://wordpress.ckeditor.com/">http://wordpress.ckeditor.com/</a>.
 
-Features:
+= Upgrading =
+
+When upgrading from CKEditor For WordPress 3.6.3 to **CKEditor For WordPress 4.0**, make sure to **clear browser cache** (*Ctrl+Shift+Delete*).
+
+= Features =
 
 * Replace the default WordPress editor with CKEditor
 * Post comment with CKEditor to provide styled and colorful comments (Optional)
