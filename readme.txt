@@ -66,6 +66,7 @@ Features:
 * Added protection against caching JavaScript files by the browser, by appending CKEditor timestamp to js files
 * Fixed: CKEditor does not load when "external" plugin is enabled, but the required extension is not installed
 * Minor fixes in the old built-in file browser
+* Spellchecker plugins are now enabled in "Advanced Options"
  
 = V3.6.3 - 21.06.2012 =
 

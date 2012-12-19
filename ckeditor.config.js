@@ -52,9 +52,6 @@ CKEDITOR.editorConfig = function(config) {
 	//IE: remove border of image when is as a link
 	config.extraCss = "a img { border: 0px\\9; }";
 
-	// Enables Spellchecker plugins
-	config.extraPlugins += (config.extraPlugins ? ',scayt,wsc' : 'scayt,wsc' );
-
 	// mediaembed plugin
 	// config.extraPlugins += (config.extraPlugins ? ',mediaembed' : 'mediaembed' );
 	// CKEDITOR.plugins.addExternal('mediaembed', ckeditorSettings.pluginPath + 'plugins/mediaembed/');

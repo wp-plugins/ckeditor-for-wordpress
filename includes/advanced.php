@@ -85,16 +85,19 @@
 						$plugins[] = "autogrow";
 						$plugins[] = "tableresize";
 						sort($plugins);
+						$plugins[] = "scayt";
+						$plugins[] = "wsc";
+						$pluginNames = array('scayt' => 'Spell Check As You Type (SCAYT)', 'wsc' => 'WebSpellChecker (WSC)');
 
 						foreach ($plugins as $plugin){
 							if ($plugin == "wpgallery" || $plugin == "wpeditimage") continue;
 							if (!isset($this->options['plugins'][$plugin])){
 								$this->options['plugins'][$plugin] = 't';
 							}
-							echo $this->checkbox('plugins', $plugin, ucfirst($plugin) . ' plugin') . '<br />';
+							echo $this->checkbox('plugins', $plugin, !empty($pluginNames[$plugin]) ? $pluginNames[$plugin] : ucfirst($plugin) . ' plugin') . '<br />';
 						}
 					?>
-				<div class="description">(<?php _e('Choose the plugins which u want to load into CKEditor', 'ckeditor_wordpress');?>)</div>
+				<div class="description">(<?php _e('Choose additional plugins which should be loaded into CKEditor', 'ckeditor_wordpress');?>)</div>
 			</td>
 			</tr>
 			<?php
@@ -131,7 +134,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Auto-detect language', 'ckeditor_wordpress')?></th>
 				<td>
-					<input id="autodetect_enabled" name="options[advanced][detect_language_auto]" type="radio" value="t" <?php if ($auto == 't'):?>checked="checked"<?php endif; ?>><label for="autodetect_enabled">Enabled</label> <br/>
+					<input id="autodetect_enabled" name="options[advanced][detect_language_auto]" type="radio" value="t" <?php if ($auto == 't'):?>checked="checked"<?php endif; ?>><label for="autodetect_enabled"> Enabled</label> <br/>
 					<input id="autodetect_disabled" name="options[advanced][detect_language_auto]" type="radio" value="f" <?php if ($auto == 'f'):?>checked="checked"<?php endif; ?>><label for="autodetect_disabled"> Disabled</label>
 					<br /><span class="description"><?php _e('Automatically detect the user language.', 'ckeditor_wordpress'); ?></span>
 					<?php if (isset($message['advanced_detect_language_auto'])): ?><br/><span class="error"><?php echo $message['advanced_detect_language_auto'] ?></span><?php endif; ?>

@@ -96,7 +96,9 @@ class ckeditor_wordpress {
 			'plugins' => array(
 				'autogrow' => 'f',
 				'tableresize' => 'f',
-				'wpgallery' => 't'
+				'wpgallery' => 't',
+				'scayt' => 't',
+				'wsc' => 't'
 			),
 		);
 		$options = get_option('ckeditor_wordpress');
@@ -702,6 +704,8 @@ class ckeditor_wordpress {
 			$available_plugins = array_keys($output['externalPlugins']);
 			$available_plugins[] = "autogrow";
 			$available_plugins[] = "tableresize";
+			$available_plugins[] = "scayt";
+			$available_plugins[] = "wsc";
 
 			foreach ((array) $options['plugins'] as $name => $val) {
 				if ($val == 't' && !isset($output['externalPlugins'][$name])) {
